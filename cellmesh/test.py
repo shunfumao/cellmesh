@@ -62,6 +62,46 @@ class TestDB(unittest.TestCase):
 
 class TestQuery(unittest.TestCase):
 
+  def test_calc_prob_one_query_one_cell(self):
+    """
+    usage: python -m unittest cellmesh.test.TestQuery.test_calc_prob_one_query_one_cell
+    """
+    from cellmesh.query import calc_prob_one_query_one_cell
+    
+    print('----- Input -----')
+    genes = ['CD79A', 'MS4A1', 'CD79B']
+    print('genes:')
+    print(genes)
+
+    cell_id = 'D001402'
+    print('cell_id:')
+    print(cell_id)
+
+    cell_gene_count = [('CD79A', 187), ('MS4A1', 12), ('POLM', 4), ('CCR2', 10)]
+    print('cell_gene_count:')
+    print(cell_gene_count)
+
+    overlapping_genes = ['CD79A', 'MS4A1']
+    print('overlapping_genes:')
+    print(overlapping_genes)
+
+    params = {'alpha': None}
+    print('params:')
+    print(params)
+
+    N_all_genes = 27322
+    print('N_all_genes:')
+    print(N_all_genes)
+
+    args = (genes, cell_id, cell_gene_count, overlapping_genes, params, N_all_genes)
+    print('\n----- Run calc_prob_one_query_one_cell -----\n')
+    result = calc_prob_one_query_one_cell(args)
+
+    print('----- Output -----')
+    print('(cell_id, prob_score):')
+    print(result)
+    return
+
   def test_prob_test(self):
     """
     usage: python -m unittest cellmesh.test.TestQuery.test_prob_test

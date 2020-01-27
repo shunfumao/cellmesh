@@ -142,7 +142,7 @@ def prob_test(
     overlapping_genes = list(overlapping_genes)
     cell_prob_vals[cell_id] = [cell_name, -np.inf, overlapping_genes, pmids]
 
-    cell_gene_count = [(x[0], x[2]) for x in genes_pmids_count]
+    cell_gene_count = [(x[0], x[2]) for x in genes_pmids_count]      
     args = (
       genes,
       cell_id,
