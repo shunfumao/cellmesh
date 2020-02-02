@@ -1,4 +1,4 @@
-# CellMesSH 
+# CellMeSH 
 
 ### Contents <a id='contents'></a>
 
@@ -20,9 +20,7 @@ CellMeSH has three parts:
   (2) a novel database
   (3) a probabilistic method to query the database.
 
-In this Github site, we aim to open source its database and the probabilistic query method, in order to assist the community efforts on automating the cell type identification.
-
-CellMeSH has also been integrated into [the Uncurl-App project](http://uncurl-app.yjzhang.com:8888), with the optimized codes [here](https://github.com/yjzhang/cellmesh).
+This Github site is a simplified version modified from its [original version](https://github.com/yjzhang/cellmesh), which was developed by Yue Zhang in order to be integrated into the [the Uncurl-App project](http://uncurl-app.yjzhang.com:8888). In this Github site, we aim to open source the database and the probabilistic query method of CellMeSH, in order to assist the community efforts on automating the cell type identification.
 
 ---
 
