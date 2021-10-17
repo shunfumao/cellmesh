@@ -108,7 +108,7 @@ The full example is in [cellmesh_root_dir]/cellmesh/test.py (test_get_all_genes)
 Check the co-occurring genes (and pubmed articles) for a particular cell type in the CellMeSH database. 
 ```
 import os
-from cellmesh.db import get_all_genes
+from cellmesh.db import get_all_genes_pmids
     
 db_file='/home/user/cellmesh/cellmesh/data/cellmesh.db'  # assume db stored here
 
