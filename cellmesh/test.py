@@ -60,6 +60,20 @@ class TestDB(unittest.TestCase):
     print('cell \'Podosomes\' has \'human\'genes:\n' + str(results))
     return
 
+  def test_get_metainfo(self):
+    """
+    usage: python -m unittest cellmesh.test.TestDB.test_get_metainfo
+    """
+    import os
+    from cellmesh.db import get_metainfo
+    
+    PATH = os.path.dirname(os.path.abspath(__file__))
+    DB_DIR = os.path.join(PATH, 'data', 'cellmesh.db')
+    print('database:\n' + DB_DIR)
+
+    get_metainfo()
+    return
+
 class TestQuery(unittest.TestCase):
 
   def test_calc_prob_one_query_one_cell(self):

@@ -13,6 +13,44 @@ SPECIES_MAP = {
   'c_elegans': 6239
 }
 
+def get_metainfo(db_dir=DB_DIR):
+  print('get_metainfo')
+  conn = sqlite3.connect(db_dir)
+  C = conn.cursor()
+
+  # structure for sqlite_master
+  # for row in conn.execute("pragma table_info('sqlite_master')").fetchall():
+  #   print(row)
+  
+  # tables for cellmesh
+  # results = conn.execute("SELECT name from sqlite_master WHERE type='table'").fetchall()
+  # for row in results:
+  #   print(row)
+
+  tables = ['cell_gene', 'cell_name', 'gene_info']
+  for table in tables:
+    print("table %s has structure:"%table)
+    for row in conn.execute("pragma table_info('%s')"%table).fetchall():
+      print(row)
+
+    print("examples:")
+    if table=='cell_gene':
+      results = conn.execute("SELECT * FROM %s WHERE count <5"%table)
+    else:
+      results = conn.execute("SELECT * FROM %s"%table)
+
+    i = 0
+    for row in results:
+      if i==5: break
+      print(row)
+      i+=1
+
+    print("")
+
+  conn.close()
+ 
+  return
+
 def get_all_cell_id_names(
   db_dir=DB_DIR, 
   include_cell_components=True, 
