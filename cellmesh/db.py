@@ -193,7 +193,46 @@ def write_csv(
   sorted(gene_list, key=lambda x: x[1])
   pdb.set_trace()
 
+  # get gene, cell counts
+  C.execute('SELECT gene, cellID, count FROM cell_gene WHERE taxid=?', (taxid,))
+  g_c_list = C.fetchall() # a list of (gene/UPPER CASE, cell_id, count)
+  g_c_dic = {}
+  for gene, cellID, count in g_c_list:
+    g_c_dic[(gene.upper(), cellID)] = count
+  pdb.set_trace()
 
+  # write
+  with open('tmp.csv', 'w') as fo:
+    hd = ',,,'
+    for cell_id, _ in cell_list:
+      hd += cell_id + ','
+    hd += '\n'
+    fo.write(hd)
 
+    hd = ',,,'
+    for _, cell_name in cell_list:
+      hd += cell_name + ','
+    hd += '\n'
+    fo.write(hd)
+
+    idx = 0
+    for taxid, gene_id, gene in gene_list:
+        gene = gene.upper()
+        row = '%s,%s,%s,'%(taxid, gene_id, gene)
+        
+        print('%d / %d'%(idx, len(gene_list)))
+        idx+=1
+        
+        for cell_id, _ in cell_list:
+            count = g_c_dic.get((gene, cell_id), 0)
+            if count > 0:
+                row += '%s,'%str(count)
+                # pdb.set_trace()
+            else:
+                row += '0,'
+        row += '\n'
+        fo.write(row)
+    # pdb.set_trace() # end for
+    print('csv written')
 
   return
