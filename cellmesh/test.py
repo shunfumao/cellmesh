@@ -74,6 +74,20 @@ class TestDB(unittest.TestCase):
     get_metainfo()
     return
 
+  def test_write_csv(self):
+    """
+    usage: python -m unittest cellmesh.test.TestDB.test_write_csv
+    """
+    import os
+    from cellmesh.db import write_csv 
+    
+    PATH = os.path.dirname(os.path.abspath(__file__))
+    DB_DIR = os.path.join(PATH, 'data', 'cellmesh.db')
+    print('database:\n' + DB_DIR)
+
+    write_csv(DB_DIR)
+    return
+
 class TestQuery(unittest.TestCase):
 
   def test_calc_prob_one_query_one_cell(self):

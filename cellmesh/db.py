@@ -1,5 +1,6 @@
 import os
 import sqlite3
+import pdb
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 DB_DIR = os.path.join(PATH, 'data', 'cellmesh.db')
@@ -167,3 +168,32 @@ def get_cell_genes_pmids(
     results = [(x[0].upper(),) + x[1:] for x in results]
     
   return results
+
+def write_csv(
+  db_dir=DB_DIR,
+  species='human'):
+  '''
+  Dump SQL db to a redundant csv file:
+  -       -        -             <cell_id> ...
+  -       -        -             <cell_name> ...
+  <taxid> <geneid> <gene_symbol> <cnt>
+  '''
+  # get cell info
+  conn = sqlite3.connect(db_dir)
+  C = conn.cursor()
+  C.execute('SELECT DISTINCT cellID, cellName FROM cell_name')
+  cell_list = C.fetchall() # a list of (cell_id, cell_name)
+  sorted(cell_list, key=lambda x: x[0])
+  pdb.set_trace()
+
+  # get gene info
+  taxid = SPECIES_MAP[species]
+  C.execute('SELECT DISTINCT taxid, geneID, gene FROM gene_info WHERE taxid=?', (taxid,))
+  gene_list = C.fetchall() # a list of (taxid, geneID, gene)
+  sorted(gene_list, key=lambda x: x[1])
+  pdb.set_trace()
+
+
+
+
+  return
