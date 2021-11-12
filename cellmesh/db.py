@@ -203,33 +203,37 @@ def write_csv(
 
   # write
   with open('tmp.csv', 'w') as fo:
-    hd = ',,,'
+    hd = '|||' #',,,'
     for cell_id, _ in cell_list:
-      hd += cell_id + ','
+      hd += cell_id + '|' #','
     hd += '\n'
     fo.write(hd)
 
-    hd = ',,,'
+    hd = '|||' #',,,'
     for _, cell_name in cell_list:
-      hd += cell_name + ','
+      hd += cell_name + '|' #','
     hd += '\n'
     fo.write(hd)
 
     idx = 0
     for taxid, gene_id, gene in gene_list:
         gene = gene.upper()
-        row = '%s,%s,%s,'%(taxid, gene_id, gene)
+        #row = '%s,%s,%s,'%(taxid, gene_id, gene)
+        row = '%s|%s|%s|'%(taxid, gene_id, gene)
         
+
         print('%d / %d'%(idx, len(gene_list)))
         idx+=1
         
         for cell_id, _ in cell_list:
             count = g_c_dic.get((gene, cell_id), 0)
             if count > 0:
-                row += '%s,'%str(count)
+                # row += '%s,'%str(count)
+                row += '%s|'%str(count)
                 # pdb.set_trace()
             else:
-                row += '0,'
+                # row += '0,'
+                row += '0|'
         row += '\n'
         fo.write(row)
     # pdb.set_trace() # end for

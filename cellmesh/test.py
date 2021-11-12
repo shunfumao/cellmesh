@@ -85,7 +85,7 @@ class TestDB(unittest.TestCase):
     DB_DIR = os.path.join(PATH, 'data', 'cellmesh.db')
     print('database:\n' + DB_DIR)
 
-    write_csv(DB_DIR)
+    write_csv(DB_DIR, 'mouse' )
     return
 
 class TestQuery(unittest.TestCase):
