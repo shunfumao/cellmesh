@@ -101,4 +101,13 @@ $ python -m unittest cellmesh.test.TestDB.test_get_cell_genes_pmids
 
 The full example is in [cellmesh_root_dir]/cellmesh/test.py (test_get_cell_genes_pmids). 
 
+---
+
+### Download CellMeSH database (Excel format)  <a id='db_excel'></a>
+
+You can download the CellMeSH database in Excel format for human from [cellmesh_human.xlsx](https://github.com/shunfumao/cellmesh/blob/master/cellmesh/db_download/cellmesh_human.xlsx) and for mouse from [cellmesh_mouse.xlsx](https://github.com/shunfumao/cellmesh/blob/master/cellmesh/db_download/cellmesh_mouse.xlsx).
+
+Each excel file contains a table where rows are genes and columns are cell types, and each pair of gene and cell type is the number of publications the gene and the cell type co-occur. The excel files contain information that is part of the SQL format database.
+
+
 
