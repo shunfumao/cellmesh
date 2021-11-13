@@ -3,32 +3,29 @@
 ### Contents <a id='contents'></a>
 
 * <a href='#intro'>Introduction</a>
-* <a href='#pub'>Publication</a>
-* <a href='#setup'>Setup</a>
-* <a href='#use_db'>Usage of CellMeSH Database</a>  
-* <a href='#use_prob'>Usage of Probabilistic Query Method</a>  
-* <a href='#use_both'>Usage of Probabilistic Query Method + CellMeSH DB</a>  
+* <a href='#db_sql'>Download CellMeSH database (SQL format)</a>
+* <a href='#db_excel'>Download CellMeSH database (Excel format)</a>
+* <a href='#use_db'>Usage of CellMeSH database</a>  
 
 ---
 
 ### Introduction <a id='intro'></a>
 
-CellMeSH is a framework to identify the cell types of the query cells based on their marker genes.
-
-CellMeSH has three parts: 
-  (1) [webserver](http://uncurl-app.yjzhang.com:8888/db_query)
-  (2) a novel database
-  (3) a probabilistic method to query the database.
-
-This Github site is a simplified version modified from its [original version](https://github.com/yjzhang/cellmesh), which was developed by Yue Zhang in order to be integrated into the [the Uncurl-App project](http://uncurl-app.yjzhang.com:8888). In this Github site, we aim to open source the database and the probabilistic query method of CellMeSH, in order to assist the community efforts on automating the cell type identification.
+CellMeSH dabase is conceptually a collection of tables, each of which as rows as genes and columns as cell types,
+and each pair of gene and cell type refers to a list of publications each of which is indexed with the gene and the cell type.
 
 ---
 
-### Publication <a id='pub'></a>
+### Download CellMeSH database (SQL format)  <a id='db_sql'></a>
 
-If you find CellMeSH is helpful, we appreciate your citation of its intial [version](https://) first:
+You can download the CellMeSH database in SQL format from [cellmesh.db.gz](https://github.com/shunfumao/cellmesh/blob/master/cellmesh/db_download/cellmesh.db.gz).
 
-Shunfu Mao, Yue Zhang, Georg Seelig, and Sreeram Kannan. CellMeSH: Probabilistic Cell-Type Identification Using Indexed Literature.
+The database in SQL format has three tables:
+
+[1] Table 'cell\_name': contains columns of 'cellID' (text), 'cellName' (text) and 'cellIndex' (integer). 'cellID' refers to the MeSH ontology ID, 'cellName' refers to the MeSH cell type, and 'cellIndex' refers to the index of the cell type among the total 570 MeSH cell types. For example, we can have a row ('D001078', 'APUD Cells', 40), meaning the cell type 'APUD Cells' has MeSH ontology ID 'D001078' and is the 40th cell type in MeSH ontology.
+
+[2]  
+
 
 ---
 
