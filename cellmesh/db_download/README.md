@@ -11,7 +11,9 @@
 
 ### Introduction <a id='intro'></a>
 
-CellMeSH dabase is conceptually a collection of tables, each of which as rows as genes and columns as cell types,
+Here we provide CellMeSH dabase in SQL format and Excel format for downloading.
+
+The database is conceptually a collection of tables, each of which is for one species and has rows as genes and columns as cell types,
 and each pair of gene and cell type refers to a list of publications each of which is indexed with the gene and the cell type.
 
 ---
@@ -24,7 +26,9 @@ The database in SQL format has three tables:
 
 [1] Table 'cell\_name': contains columns of 'cellID' (text), 'cellName' (text) and 'cellIndex' (integer). 'cellID' refers to the MeSH ontology ID, 'cellName' refers to the MeSH cell type, and 'cellIndex' refers to the index of the cell type among the total 570 MeSH cell types. For example, we can have a row ('D001078', 'APUD Cells', 40), meaning the cell type 'APUD Cells' has MeSH ontology ID 'D001078' and is the 40th cell type in MeSH ontology.
 
-[2]  
+[2] Table 'gene\_info': contains columns of 'gene' (text), 'geneID' (integer), 'totalCounts' (integer) and 'taxid' (text). 'gene' refers to gene symbol, 'geneID' refers to the NCBI gene ID, 'totalCounts' refers to the number of publications where the gene occurs, and 'taxid' refers to species. For example, we can have a row ('ND6', 6775063, 500, '63221'), meaning the gene 'ND6' has NCBI gene ID 6775063 and taxid '63221' (Homo sapiens neanderthalensis), and has been indexed in 500 publications.
+
+[3] Table 'cell\_gene': contains columns of 'cellID' (text), 'gene' (text), 'count' (integer), 'tfidf' (real), 'pmids' (text) and 'taxid' (text). Here 'cellID' and 'gene' and 'taxid' have same meaning as in tables 'cell\_name' and 'gene\_info'. 'pmids' (and 'count') refers to the list (and number) of publications where the gene and the cell co-occur, 'tfidf' is the weight adjustment for the 'count'. For example, we can have a row ('D000050', 'XKR3', 1, 0.2, '16431037', '9606'), meaning that the gene 'XKR3' (with taxid '9606') and the cell type with MeSH ID 'D000050' co-occur in one publication with PMID '16431037', and the adjust weight is 0.2.
 
 
 ---
