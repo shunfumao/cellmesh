@@ -5,6 +5,7 @@
 * <a href='#intro'>Introduction</a>
 * <a href='#pub'>Publication</a>
 * <a href='#setup'>Setup</a>
+* <a href='#download_db'> Download CellMeSH Database</a>
 * <a href='#use_db'>Usage of CellMeSH Database</a>  
 * <a href='#use_prob'>Usage of Probabilistic Query Method</a>  
 * <a href='#use_both'>Usage of Probabilistic Query Method + CellMeSH DB</a>  
@@ -57,6 +58,13 @@ $ python
 >>> from cellmesh.db import DB_DIR
 >>> print(DB_DIR)
 ```
+
+---
+
+### Download CellMeSH Database <a id='download_db'></a>
+
+We provide CellMeSH Database in SQL format and Excel format for downloading,
+see [here](https://github.com/shunfumao/cellmesh/tree/master/cellmesh/db_download).
 
 ---
 
